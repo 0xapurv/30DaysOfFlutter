@@ -11,6 +11,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
+  ThemeData theme;
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -72,6 +73,13 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  alignment: Alignment.centerRight,
+                  child: ElevatedButton(
+                    child: "Change Theme".text.bold.make(),
+                    onPressed: () => Navigator.pushNamed(context, MyRoutes.themeRoute),
+                  ),
+                ),
                 CatalogHeader(),
                 if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                   CatalogList().py16().expand()
@@ -80,6 +88,8 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-        ));
+        ),
+
+    );
   }
 }
